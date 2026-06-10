@@ -1,0 +1,56 @@
+# MkDocs 設定：把這份「研究論文整理」repo 發佈成 GitHub Pages。
+#
+# 研究筆記內容（index.md 與各主題資料夾）刻意保留在 repo 根目錄，以符合
+# CLAUDE.md 的資料夾規範。mkdocs 1.6 不允許 docs_dir 等於 config 檔所在目錄，
+# 因此「不直接拿 repo 根當 docs_dir」，改由建置腳本 scripts/build-site.sh
+# 用 rsync 把內容暫存複製到 _docs/（gitignored）再產站。
+#
+# 本機預覽 / 建置：
+#   ./scripts/build-site.sh serve   # 暫存後啟動本機預覽
+#   ./scripts/build-site.sh build   # 暫存後產出 site/
+# （直接 `mkdocs serve` 會因為 _docs/ 尚未產生而失敗。）
+
+site_name: Topic Research — 研究論文整理
+site_description: 依主題整理的學術論文文獻筆記（繁體中文）
+site_url: https://woodycatliu.github.io/topic-research/
+repo_url: https://github.com/woodycatliu/topic-research
+repo_name: woodycatliu/topic-research
+
+# 由 scripts/build-site.sh 在建置前 rsync 產生（gitignored）
+docs_dir: _docs
+
+theme:
+  name: material
+  language: zh-TW
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換到淺色模式
+
+plugins:
+  # 內建搜尋；安裝 jieba 後會自動偵測中文並做分詞（見 requirements.txt）
+  - search
+
+markdown_extensions:
+  - tables
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences

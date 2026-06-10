@@ -1,0 +1,4 @@
+# GitHub Pages（MkDocs）建置相依套件 — 精確版本鎖定
+# 來源：PyPI 官方套件。更新版本前請先於本機驗證 `mkdocs build`。
+mkdocs-material==9.7.6
+jieba==0.42.1

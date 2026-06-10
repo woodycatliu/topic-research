@@ -1,0 +1,4 @@
+# MkDocs 建置產物與暫存
+/_docs/
+/site/
+.DS_Store
