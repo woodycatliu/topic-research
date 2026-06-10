@@ -54,3 +54,5 @@ markdown_extensions:
       permalink: true
   - pymdownx.highlight
   - pymdownx.superfences
+  # 自動把內文裸網址（https://...）與 email 轉成可點連結
+  - pymdownx.magiclink
